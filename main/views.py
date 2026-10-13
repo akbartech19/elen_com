@@ -1,22 +1,46 @@
-from django.shortcuts import render
 
-def index(request):
+from django.shortcuts import render, redirect
+from .models import Contact
+
+
+def index_view(request):
     return render(request, 'index.html')
 
-def index2(request):
+
+def index2_view(request):
     return render(request, 'index-2.html')
 
-def about(request):
+
+def about_view(request):
     return render(request, 'about.html')
 
-def contact(request):
+
+def contact_view(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+
+        Contact.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message
+        )
+
+        return redirect("contact")
+
     return render(request, 'contact.html')
 
-def fashion(request):
+
+def fashion_view(request):
     return render(request, 'fashion.html')
 
-def photography(request):
+
+def photography_view(request):
     return render(request, 'photography.html')
 
-def travel(request):
+
+def travel_view(request):
     return render(request, 'travel.html')

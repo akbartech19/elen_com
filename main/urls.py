@@ -1,12 +1,20 @@
 from django.urls import path
-from . import views
+from .views import (
+    index_view, 
+    index2_view, 
+    about_view, 
+    contact_view, 
+    fashion_view, 
+    photography_view, 
+    travel_view
+)
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('index-2/', views.index2, name='index2'),
-    path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
-    path('fashion/', views.fashion, name='fashion'),
-    path('photography/', views.photography, name='photography'),
-    path('travel/', views.travel, name='travel'),
+    path('', index_view, name='index'),
+    path('index-2/', index2_view, name='index_2'),
+    path('about/', about_view, name='about'),
+    path('contact/', contact_view, name='contact'),
+    path('fashion/', fashion_view, name='fashion'),
+    path('photography/', photography_view, name='photography'),
+    path('travel/', travel_view, name='travel'),
 ]
