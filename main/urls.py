@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import newsletter_subscribe
 from .views import (
     index_view, 
     index2_view, 
@@ -6,7 +7,8 @@ from .views import (
     contact_view, 
     fashion_view, 
     photography_view, 
-    travel_view
+    travel_view,
+    category_view
 )
 
 urlpatterns = [
@@ -17,4 +19,6 @@ urlpatterns = [
     path('fashion/', fashion_view, name='fashion'),
     path('photography/', photography_view, name='photography'),
     path('travel/', travel_view, name='travel'),
+    path("newsletter/subscribe/",newsletter_subscribe,name="newsletter_subscribe"),
+    path("category/<str:category_name>/",category_view,name="category"),
 ]
